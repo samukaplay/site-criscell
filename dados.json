@@ -1,0 +1,12 @@
+{
+  "servicos": [
+    { "id": 1, "nome": "Troca de Tela", "preco": "150.00", "descricao": "Substituição de display completo." },
+    { "id": 2, "nome": "Troca de Bateria", "preco": "120.00", "descricao": "Baterias novas com garantia." },
+    { "id": 3, "nome": "Reparo de Conector de Carga", "preco": "90.00", "descricao": "Conserto de pinos de carregamento." }
+  ],
+  "produtos": [
+    { "id": 1, "nome": "Película de Vidro 3D", "preco": "30.00" },
+    { "id": 2, "nome": "Carregador Turbo Tipo-C", "preco": "60.00" }
+  ],
+  "agendamentos": []
+}
