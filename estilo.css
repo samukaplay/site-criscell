@@ -1,0 +1,294 @@
+/* ==========================================================================
+   CRISCELL — identidade "bancada de assistência técnica" (formas e tipografia novas, cores originais)
+   Paleta original da CrisCell: azul-marinho, azul de destaque, dourado e marfim.
+   Tipografia: Big Shoulders Display (títulos, estilo carimbo industrial) + Hanken Grotesk (texto).
+   Todas as cores de texto vêm de variáveis: nada é forçado por tag, então o modo escuro
+   mantém o contraste em qualquer componente.
+   ========================================================================== */
+
+/* 1. VARIÁVEIS */
+:root {
+  --font-title: 'Big Shoulders Display', 'Arial Narrow', Arial, sans-serif;
+  --font-body: 'Hanken Grotesk', 'Segoe UI', Arial, sans-serif;
+  --ink: #070c14;          /* fundo fixo escuro (menu, hero, promoção) */
+  --ink-deep: #050a12;     /* seção de compromisso e rodapé */
+  --tag: #fbbf24;          /* dourado: assinatura da marca, ação principal */
+  --on-tag: #1a1203;
+  --theme-transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+
+body.theme-light {
+  --bg-primary: #f6f9fd;
+  --bg-surface: #ffffff;
+  --bg-soft-blue: #e8f1fd;
+  --text-main: #0b1220;
+  --text-muted: #414d61;
+  --accent: #1d4ed8;
+  --accent-hover: #1e40af;
+  --on-accent: #ffffff;
+  --highlight-accent: #b45309;
+  --border-color: #d7deea;
+  --solid-shadow: #0b1220;
+  color-scheme: light;
+}
+
+body.theme-dark {
+  --bg-primary: #05070d;
+  --bg-surface: #0f1626;
+  --bg-soft-blue: #141d33;
+  --text-main: #f3ead9;
+  --text-muted: #cdbf9f;
+  --accent: #60a5fa;
+  --accent-hover: #93c5fd;
+  --on-accent: #06142e;
+  --highlight-accent: #fbbf24;
+  --border-color: #5a4e2e;
+  --solid-shadow: #000000;
+  color-scheme: dark;
+}
+
+/* Blocos de fundo escuro fixo: redefinem as variáveis, então tudo dentro deles já nasce legível nos dois temas */
+.custom-navbar, .hero-section, .section-dark-accent, .promo-banner-section, .footer-dark {
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --accent: #60a5fa;
+  --accent-hover: #93c5fd;
+  --on-accent: #06142e;
+  --highlight-accent: #fbbf24;
+  --border-color: rgba(255, 255, 255, .24);
+  --solid-shadow: #000;
+  color: var(--text-main);
+}
+
+/* Variáveis do Bootstrap (modal, accordion, formulários, abas) seguem o tema */
+body.theme-light, body.theme-dark {
+  --bs-body-bg: var(--bg-primary);
+  --bs-body-color: var(--text-main);
+  --bs-border-color: var(--border-color);
+  --bs-secondary-color: var(--text-muted);
+  --bs-emphasis-color: var(--text-main);
+}
+body.theme-dark .btn-close,
+body.theme-dark .accordion-button::after { filter: invert(1) grayscale(1) brightness(1.6); }
+
+/* 2. BASE */
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-main);
+  background-color: var(--bg-primary);
+  transition: var(--theme-transition);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  letter-spacing: .01em;
+  line-height: 1.05;
+  color: var(--text-main);
+}
+h5 { font-size: 1.5rem; }
+h6 { font-size: 1.2rem; }
+
+a { text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--tag); outline-offset: 2px; }
+
+.text-blue-accent { color: var(--accent) !important; }
+.bg-blue-accent { background-color: var(--accent) !important; color: var(--on-accent) !important; }
+.bg-soft-blue { background-color: var(--bg-soft-blue) !important; }
+.bg-navy-card { background-color: #0d1b2a !important; }
+.text-muted, .text-muted-adaptive { color: var(--text-muted) !important; }
+.text-white-50 { color: rgba(255, 255, 255, .8) !important; }
+.border-adaptive { border-color: var(--border-color) !important; }
+.extra-small { font-size: .72rem; }
+
+/* Cantos mais secos: etiquetas e peças de bancada, em vez de pílulas */
+.rounded-4 { border-radius: 10px !important; }
+.rounded-3 { border-radius: 8px !important; }
+.rounded-pill, .btn.rounded-circle { border-radius: 6px !important; }
+
+.section-theme-adaptive { background-color: var(--bg-primary); }
+.section-theme-alt { background-color: var(--bg-surface); }
+.section-dark-accent { background: var(--ink-deep); }
+
+/* 3. FORMULÁRIOS, MODAL, ABAS */
+.input-adaptive, .input-group-text {
+  background-color: var(--bg-surface) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border-color) !important;
+}
+.input-adaptive::placeholder { color: var(--text-muted) !important; opacity: .85; }
+.modal-theme-adaptive { background-color: var(--bg-surface) !important; color: var(--text-main) !important; }
+.nav-pills .nav-link { color: var(--text-main); }
+.nav-pills .nav-link.active { background-color: var(--accent); color: var(--on-accent); }
+
+/* 4. MENU */
+.custom-navbar {
+  background: var(--ink);
+  padding: .8rem 0;
+  border-bottom: 3px solid var(--tag);
+  transition: padding .25s ease;
+}
+.custom-navbar.scrolled { padding: .45rem 0; }
+
+.brand-badge {
+  width: 38px; height: 38px;
+  background: var(--tag); color: var(--on-tag);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.brand-title { font-family: var(--font-title); font-weight: 800; font-size: 1.7rem; line-height: 1; color: #fff !important; }
+.brand-tagline { font-size: .75rem; color: var(--text-muted) !important; }
+
+.nav-link-custom {
+  color: #f1f5f9 !important;
+  font-weight: 500; font-size: .95rem;
+  padding: .5rem .8rem !important;
+  border-bottom: 2px solid transparent;
+}
+.nav-link-custom:hover, .nav-link-custom.active { color: #fff !important; border-bottom-color: var(--tag); }
+
+.btn-theme-toggle {
+  width: 38px; height: 38px;
+  background: transparent; color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, .5);
+  display: flex; align-items: center; justify-content: center;
+}
+.btn-theme-toggle:hover { border-color: var(--tag); color: var(--tag); }
+
+/* 5. BOTÕES */
+.btn-primary-glass, .btn-glow-gold, .btn-navy, .btn-navy-outline, .btn-outline-glass { font-weight: 700; border-width: 2px; border-style: solid; transition: transform .12s ease, box-shadow .12s ease, background-color .2s ease; }
+.btn-primary-glass { background: var(--tag); border-color: var(--tag); color: var(--on-tag) !important; box-shadow: 4px 4px 0 #000; }
+.btn-primary-glass:hover { background: #fcd34d; border-color: #fcd34d; color: var(--on-tag) !important; transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
+.btn-outline-glass { background: transparent; border-color: #fff; color: #fff !important; }
+.btn-outline-glass:hover { background: #fff; color: var(--ink) !important; }
+.btn-glow-gold { background: #128c4a; border-color: #128c4a; color: #fff !important; font-size: .9rem; }
+.btn-glow-gold:hover { background: #0e7a40; border-color: #0e7a40; }
+.btn-navy { background: var(--accent); border-color: var(--accent); color: var(--on-accent) !important; }
+.btn-navy:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--on-accent) !important; }
+.btn-navy-outline { background: transparent; border-color: var(--accent); color: var(--accent); font-size: .8rem; }
+.btn-navy-outline:hover { background: var(--accent); color: var(--on-accent) !important; }
+.btn-soft-navy {
+  width: 34px; height: 34px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--bg-soft-blue); color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+.btn-soft-navy:hover { background: var(--accent); color: var(--on-accent) !important; }
+
+/* 6. HERO — o ponto de maior ousadia: título condensado e a "ordem de serviço" com sombra laranja */
+.hero-section { min-height: 100vh; padding: 120px 0 80px; background: var(--ink); }
+
+.hero-chip {
+  display: inline-flex; align-items: center;
+  background: var(--tag); color: var(--on-tag);
+  font-weight: 700; font-size: .9rem;
+  padding: 6px 22px 6px 14px;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%); /* formato de etiqueta de preço */
+}
+
+.hero-title {
+  font-weight: 800;
+  font-size: clamp(3rem, 7.5vw, 5.8rem);
+  line-height: .95;
+  letter-spacing: 0;
+  color: #fff;
+  max-width: 14ch;
+}
+.hero-lead { font-size: 1.1rem; max-width: 46ch; color: var(--text-muted) !important; }
+
+.stat-num { display: block; font-family: var(--font-title); font-weight: 800; font-size: 2rem; line-height: 1; color: #fff !important; }
+.stat-lbl { font-size: .8rem; color: var(--text-muted) !important; }
+.stat-divider { width: 1px; height: 32px; background: rgba(255, 255, 255, .3); }
+
+.glass-card {
+  background: #0f172a;
+  border: 2px solid #f8fafc;
+  box-shadow: 8px 8px 0 var(--tag);
+}
+.pulse-icon {
+  width: 45px; height: 45px;
+  background: var(--tag); color: var(--on-tag);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem;
+}
+
+/* Única animação automática: entrada do texto do hero ao carregar a página */
+@keyframes entrada { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.hero-section .row > div:first-child { animation: entrada .7s ease-out both; }
+
+/* 7. TÍTULOS DE SEÇÃO */
+.section-head { max-width: 60ch; }
+.sub-title-badge {
+  display: inline-block;
+  font-size: .95rem; font-weight: 700;
+  color: var(--text-muted);
+  padding-left: .7rem;
+  border-left: 4px solid var(--tag);   /* barra de etiqueta: marca o assunto da seção */
+  margin-bottom: .75rem;
+}
+.section-title { font-weight: 800; font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: .95; }
+.section-subtitle { font-size: 1rem; max-width: 60ch; color: var(--text-muted) !important; }
+
+/* 8. CARTÕES */
+.service-card, .product-card, .vitrine-card, .testimonial-card, .calendar-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+.hover-lift:hover, .product-card:hover, .vitrine-card:hover {
+  border-color: var(--accent) !important;
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--solid-shadow) !important;
+}
+.srv-price { font-size: .9rem; font-weight: 700; color: var(--accent); }
+
+.pilar-card { background: rgba(255, 255, 255, .04); border: 1px solid var(--border-color); height: 100%; }
+.pilar-card:hover { border-color: var(--tag); }
+.pilar-icon { font-size: 1.8rem; color: var(--tag); }
+.vitrine-card { height: 100%; }
+
+.avatar-circle-lg { width: 70px; height: 70px; border-radius: 50% !important; display: flex; align-items: center; justify-content: center; }
+.avatar-circle-lg img { width: 100%; height: 100%; object-fit: cover; }
+.avatar-img { width: 50px; height: 50px; object-fit: cover; flex-shrink: 0; }
+.about-card-box { border: 1px solid var(--border-color); }
+
+/* 9. IMAGENS: mesmo tratamento de cor em todas as fotos */
+.hero-img, .media-placeholder img, .product-img, .before-after-img-box img { filter: saturate(.85) contrast(1.05); object-fit: cover; height: 100%; }
+.hero-card-img-wrapper { height: 220px; }
+.media-placeholder, .product-img-box { height: 180px; }
+.before-after-img-box { height: 140px; background: var(--bg-soft-blue); }
+
+/* 10. FAQ */
+.custom-accordion .accordion-button { background-color: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border-color); box-shadow: none; }
+.custom-accordion .accordion-button:not(.collapsed) { background-color: var(--bg-soft-blue); color: var(--text-main); border-left: 4px solid var(--tag); }
+.custom-accordion .accordion-body { background-color: var(--bg-surface); color: var(--text-main); }
+
+/* 11. FAIXA PROMOCIONAL */
+.promo-banner-section { min-height: 320px; display: flex; align-items: stretch; background: var(--ink); }
+.promo-banner-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.85) brightness(.7); }
+.promo-banner-overlay { position: relative; width: 100%; min-height: 320px; background: linear-gradient(90deg, rgba(5, 10, 18, .95) 0%, rgba(5, 10, 18, .78) 60%, rgba(5, 10, 18, .5) 100%); }
+
+/* 12. PEDIDOS (cliente e admin) */
+.order-item { background-color: var(--bg-soft-blue); border-left: 4px solid var(--tag); border-radius: 6px; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.order-item .order-info small { color: var(--text-muted); }
+
+/* 13. RODAPÉ */
+.footer-dark { background-color: var(--ink-deep); }
+.footer-links a { color: var(--text-muted) !important; text-decoration: none; display: inline-block; margin-bottom: .5rem; }
+.footer-links a:hover { color: #fff !important; text-decoration: underline; }
+
+@media (max-width: 991.98px) {
+  .hero-section { padding-top: 100px; text-align: center; }
+  .hero-title, .hero-lead { margin-left: auto; margin-right: auto; }
+  .promo-banner-overlay { background: linear-gradient(180deg, rgba(5, 10, 18, .6) 0%, rgba(5, 10, 18, .94) 70%); align-items: flex-end !important; padding-bottom: 2rem; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
