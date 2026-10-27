@@ -1,0 +1,96 @@
+{
+  "services": [
+    {
+      "name": "Troca de Tela",
+      "title": "Troca de Tela & Display",
+      "description": "Substituição de telas quebradas ou touch danificado com displays AMOLED/OLED originais e compatíveis de alta definição.",
+      "price": 120,
+      "image": "https://images.pexels.com/photos/288479/pexels-photo-288479.jpeg?auto=compress&cs=tinysrgb&w=700&h=400&fit=crop",
+      "whatsapp_text": "Quero orçamento para Troca de Tela",
+      "sort_order": 1
+    },
+    {
+      "name": "Troca de Bateria",
+      "title": "Troca de Bateria",
+      "description": "Sua bateria descarrega rápido? Trocamos por baterias novas com mAh real e selo de segurança contra superaquecimento.",
+      "price": 90,
+      "image": "https://images.pexels.com/photos/32942100/pexels-photo-32942100.jpeg?auto=compress&cs=tinysrgb&w=700&h=400&fit=crop",
+      "whatsapp_text": "Quero orçamento para Troca de Bateria",
+      "sort_order": 2
+    },
+    {
+      "name": "Conector de Carga",
+      "title": "Conector de Carga",
+      "description": "Reparo ou substituição de conector Tipo-C, Lightning e Micro-USB para o seu celular voltar a carregar perfeitamente.",
+      "price": 70,
+      "image": "https://images.pexels.com/photos/5208307/pexels-photo-5208307.jpeg?auto=compress&cs=tinysrgb&w=700&h=400&fit=crop",
+      "whatsapp_text": "Quero orçamento para Conector de Carga",
+      "sort_order": 3
+    },
+    {
+      "name": "Reparo em Placa Mãe",
+      "title": "Reparo em Placa Mãe",
+      "description": "Microsolda especializada para resolver curtos, problemas de ci de carga (Tristar), áudio, sinal de rede e memória.",
+      "price": 150,
+      "image": "https://images.pexels.com/photos/6755138/pexels-photo-6755138.jpeg?auto=compress&cs=tinysrgb&w=700&h=400&fit=crop",
+      "whatsapp_text": "Quero orçamento para Reparo em Placa",
+      "sort_order": 4
+    },
+    {
+      "name": "Desoxidação (Banho Químico)",
+      "title": "Desoxidação (Banho Químico)",
+      "description": "Seu celular caiu na água? Realizamos banho ultrassônico para remover a oxidação e salvar seus dados importantes.",
+      "price": 100,
+      "image": "https://images.pexels.com/photos/6755137/pexels-photo-6755137.jpeg?auto=compress&cs=tinysrgb&w=700&h=400&fit=crop",
+      "whatsapp_text": "Quero orçamento para Desoxidação",
+      "sort_order": 5
+    },
+    {
+      "name": "Câmeras & Lentes",
+      "title": "Câmeras & Lentes",
+      "description": "Troca de lente de vidro quebrada, módulos de câmera frontal/traseira trêmula ou com foco queimado.",
+      "price": 80,
+      "image": "https://images.pexels.com/photos/33632627/pexels-photo-33632627.jpeg?auto=compress&cs=tinysrgb&w=700&h=400&fit=crop",
+      "whatsapp_text": "Quero orçamento para Câmeras",
+      "sort_order": 6
+    }
+  ],
+  "products": [
+    {
+      "category": "Proteção Tela",
+      "name": "Película de Cerâmica 9D",
+      "description": "Resistência máxima contra impactos, sem trincar as bordas.",
+      "price": 25.0,
+      "image": "https://images.pexels.com/photos/719399/pexels-photo-719399.jpeg?auto=compress&cs=tinysrgb&w=600&h=500&fit=crop",
+      "badge": "Mais Vendido",
+      "badge_class": "bg-blue-accent text-white"
+    },
+    {
+      "category": "Energia",
+      "name": "Carregador Turbo 20W PD",
+      "description": "Fonte USB-C de carregamento rápido para iPhone e Android.",
+      "price": 65.0,
+      "image": "https://images.pexels.com/photos/5208777/pexels-photo-5208777.jpeg?auto=compress&cs=tinysrgb&w=600&h=500&fit=crop",
+      "badge": "Carga Rápida",
+      "badge_class": "bg-warning text-dark"
+    },
+    {
+      "category": "Áudio",
+      "name": "Fone Bluetooth TWS Pro",
+      "description": "Som estéreo de alta fidelidade com graves profundos e estojo recarregável.",
+      "price": 110.0,
+      "image": "https://images.pexels.com/photos/14979021/pexels-photo-14979021.jpeg?auto=compress&cs=tinysrgb&w=600&h=500&fit=crop",
+      "badge": "",
+      "badge_class": "bg-blue-accent text-white"
+    },
+    {
+      "category": "Proteção Corpo",
+      "name": "Capa Anti-Impacto MagSafe",
+      "description": "Bordas reforçadas em TPU flexível com alinhamento magnético.",
+      "price": 45.0,
+      "image": "https://images.pexels.com/photos/18403789/pexels-photo-18403789.jpeg?auto=compress&cs=tinysrgb&w=600&h=500&fit=crop",
+      "badge": "",
+      "badge_class": "bg-blue-accent text-white"
+    }
+  ]
+}
