@@ -1,0 +1,714 @@
+/* ==========================================================================
+   CRISCELL - PALETA AZULADA HARMÔNICA, MODO DARK ALTO CONTRASTE & TIPOGRAFIA
+   ========================================================================== */
+
+/* 1. VARIÁVEIS DE DESIGN & TEMAS */
+:root {
+  --font-title: 'Archivo', 'Segoe UI', Arial, sans-serif;
+  --font-body: 'Source Sans 3', 'Segoe UI', Arial, sans-serif;
+  --theme-transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* TEMA PADRÃO / CLARO */
+body.theme-light {
+  --bg-primary: #f6f9fd;
+  --bg-surface: #ffffff;
+  --bg-alt: #eaefed;
+  --bg-soft-blue: #e8f1fd;
+  --navy-card: #0d1b2a;
+
+  --text-main: #0b1220;
+  --text-muted: #414d61;
+
+  --blue-accent: #1d4ed8;
+  --blue-hover: #1e40af;
+  --highlight-accent: #b45309; /* Bronze/dourado profundo — assinatura sofisticada do modo claro */
+  --border-color: #d7deea;
+  --card-shadow: 0 10px 28px -6px rgba(15, 23, 42, 0.14);
+}
+
+/* TEMA ESCURO (Identidade Própria: Fundo Meia-Noite + Texto Marfim/Dourado) */
+body.theme-dark {
+  --bg-primary: #05070d;
+  --bg-surface: #0f1626;
+  --bg-alt: #090e19;
+  --bg-soft-blue: #141d33;
+  --navy-card: #0b1320;
+
+  --text-main: #f3ead9;        /* Marfim quente — assinatura própria, bem distinta do azul-marinho do modo claro */
+  --text-muted: #b3a488;       /* Dourado-acinzentado envelhecido, nitidamente separado do texto principal */
+
+  --blue-accent: #60a5fa;      /* Azul claro fluorescente */
+  --blue-hover: #93c5fd;
+  --highlight-accent: #fbbf24; /* Dourado vívido — assinatura visual exclusiva do modo escuro */
+  --border-color: #423a24;
+  --card-shadow: 0 14px 34px -6px rgba(0, 0, 0, 0.8), 0 0 20px -8px rgba(251, 191, 36, 0.25);
+}
+
+/* Forçar visualização correta no Dark Mode para Bootstrap e tags nativas */
+body.theme-dark,
+body.theme-dark p,
+body.theme-dark span,
+body.theme-dark div,
+body.theme-dark label,
+body.theme-dark li,
+body.theme-dark small {
+  color: var(--text-main);
+}
+
+body.theme-dark .text-muted,
+body.theme-dark .text-secondary {
+  color: var(--text-muted) !important;
+}
+
+/* Brilho dourado sutil nos títulos — presente apenas no modo escuro */
+body.theme-dark .section-title,
+body.theme-dark .hero-title {
+  text-shadow: 0 0 24px rgba(251, 191, 36, 0.18);
+}
+
+/* 2. ESTILOS GERAIS ADAPTÁVEIS */
+body {
+  font-family: var(--font-body);
+  color: var(--text-main);
+  background-color: var(--bg-primary);
+  transition: var(--theme-transition);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  letter-spacing: -0.01em;
+  color: var(--text-main) !important;
+}
+
+.fw-black { font-weight: 800; }
+.text-blue-accent { color: var(--blue-accent) !important; }
+.bg-blue-accent { background-color: var(--blue-accent) !important; }
+.bg-soft-blue { background-color: var(--bg-soft-blue) !important; transition: var(--theme-transition); }
+.bg-navy-card { background-color: var(--navy-card) !important; }
+.text-muted-adaptive { color: var(--text-muted) !important; }
+.border-adaptive { border-color: var(--border-color) !important; }
+
+/* Seções Adaptáveis */
+.section-theme-adaptive {
+  background-color: var(--bg-primary);
+  transition: var(--theme-transition);
+}
+
+.section-theme-alt {
+  background-color: var(--bg-surface);
+  transition: var(--theme-transition);
+}
+
+.section-dark-accent {
+  background: #050a12;
+}
+
+/* Inputs e Modais Adaptáveis */
+.input-adaptive {
+  background-color: var(--bg-surface) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border-color) !important;
+}
+
+.input-adaptive::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 0.8;
+}
+
+.modal-theme-adaptive {
+  background-color: var(--bg-surface) !important;
+  color: var(--text-main) !important;
+}
+
+/* 3. BOTÃO DE ALTERNÂNCIA DE TEMA */
+.btn-theme-toggle {
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #f59e0b;
+  transform: rotate(15deg);
+}
+
+/* 4. NAVBAR SOFISTICADA */
+.custom-navbar {
+  background: rgba(7, 12, 20, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 0.8rem 0;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.custom-navbar.scrolled {
+  padding: 0.5rem 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.brand-badge {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--blue-accent), var(--blue-hover));
+  color: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.brand-title {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: #ffffff !important;
+  line-height: 1;
+}
+
+.brand-tagline {
+  font-size: 0.65rem;
+  color: #f1f5f9 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.nav-link-custom {
+  color: #f1f5f9 !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.8rem !important;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.nav-link-custom:hover, .nav-link-custom.active {
+  color: #ffffff !important;
+}
+
+.nav-link-custom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--blue-accent);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link-custom:hover::after, .nav-link-custom.active::after {
+  width: 80%;
+}
+
+.btn-glow-gold {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.88rem;
+  border: none;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-glow-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* 5. HERO SECTION */
+.hero-section {
+  min-height: 100vh;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  background: radial-gradient(circle at top right, #0f172a 0%, #070c14 100%);
+  color: #ffffff;
+}
+
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(37, 99, 235, 0.25);
+  border: 1px solid rgba(96, 165, 250, 0.5);
+  color: #bfdbfe;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 50px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #93c5fd, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-lead {
+  font-size: 1.05rem;
+  max-width: 520px;
+  color: #f1f5f9 !important;
+}
+
+.btn-primary-glass {
+  background: var(--blue-accent);
+  color: #ffffff !important;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-primary-glass:hover {
+  background: var(--blue-hover);
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+.btn-outline-glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff !important;
+  font-weight: 500;
+  backdrop-filter: blur(5px);
+  transition: all 0.2s ease;
+}
+
+.btn-outline-glass:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff !important;
+  border-color: #ffffff;
+}
+
+.stat-num {
+  display: block;
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: #ffffff !important;
+}
+
+.stat-lbl {
+  font-size: 0.75rem;
+  color: #e2e8f0 !important;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Glass Card Component */
+.glass-card {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.pulse-icon {
+  width: 45px;
+  height: 45px;
+  background: rgba(37, 99, 235, 0.3);
+  color: #93c5fd;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5); }
+  70% { box-shadow: 0 0 0 12px rgba(37, 99, 235, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+
+/* 6. CARDS & COMPONENTES ADAPTÁVEIS */
+.sub-title-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--highlight-accent);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--text-main) !important;
+}
+
+.section-subtitle {
+  font-size: 0.95rem;
+  max-width: 580px;
+  margin: 0 auto;
+  color: var(--text-muted) !important;
+}
+
+/* Pilar Cards */
+.pilar-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.3s ease;
+}
+
+.pilar-card:hover {
+  background: rgba(37, 99, 235, 0.15);
+  border-color: var(--blue-accent);
+  transform: translateY(-5px);
+}
+
+.pilar-icon {
+  font-size: 1.8rem;
+  color: var(--blue-accent);
+}
+
+/* Service & Product Cards */
+.service-card, .product-card, .vitrine-card, .testimonial-card, .calendar-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  transition: var(--theme-transition);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--card-shadow) !important;
+  border-color: var(--blue-accent) !important;
+}
+
+.service-icon-box {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.srv-price {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--blue-accent);
+}
+
+.btn-navy-outline {
+  border: 1px solid var(--blue-accent);
+  color: var(--blue-accent);
+  font-weight: 600;
+  font-size: 0.78rem;
+  transition: all 0.2s ease;
+}
+
+.btn-navy-outline:hover {
+  background: var(--blue-accent);
+  color: #ffffff !important;
+}
+
+.btn-soft-navy {
+  background: var(--bg-soft-blue);
+  color: var(--blue-accent);
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-soft-navy:hover {
+  background: var(--blue-accent);
+  color: #ffffff !important;
+}
+
+.vitrine-card:hover {
+  transform: scale(1.02);
+}
+
+.extra-small {
+  font-size: 0.7rem;
+}
+
+.avatar-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+}
+
+.avatar-circle-lg {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-circle-lg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Quem Somos */
+.about-card-box {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.about-bg-circle {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(37, 99, 235, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.btn-navy {
+  background: var(--blue-accent);
+  color: #ffffff !important;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-navy:hover {
+  background: var(--blue-hover);
+  color: #ffffff !important;
+}
+
+/* Accordion Ajustado para Modo Dark */
+.custom-accordion .accordion-button {
+  background-color: var(--bg-surface);
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color);
+}
+
+.custom-accordion .accordion-button:not(.collapsed) {
+  background-color: var(--bg-soft-blue);
+  color: var(--highlight-accent) !important;
+  box-shadow: none;
+}
+
+.custom-accordion .accordion-body {
+  background-color: var(--bg-surface);
+  color: var(--text-main) !important;
+}
+
+/* Footer */
+.footer-dark {
+  background-color: #050a12;
+  color: #e2e8f0;
+}
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff !important;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+  background: var(--blue-accent);
+  color: #ffffff !important;
+  transform: translateY(-3px);
+}
+
+.footer-links a {
+  color: #e2e8f0 !important;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a:hover {
+  color: #ffffff !important;
+  transform: translateX(3px);
+}
+
+/* 7. ENCAIXE DE IMAGENS E CONSISTÊNCIA DE ALTURA DAS CAIXAS */
+
+/* Imagem do card principal do Hero */
+.hero-card-img-wrapper {
+  height: 220px;
+}
+.hero-card-img-wrapper .hero-img {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Tratamento de cor coeso para todas as fotos reais do site:
+   uma leve dessaturação + acento frio deixa fotos de fontes
+   diferentes com a mesma "temperatura" visual, alinhada à
+   paleta azul-marinho da marca, em vez de cores aleatórias. */
+.hero-img,
+.media-placeholder img,
+.product-img,
+.before-after-img-box img {
+  filter: saturate(0.82) contrast(1.05) brightness(0.97) hue-rotate(-4deg);
+}
+
+/* Imagens dos cards de Serviços */
+.media-placeholder {
+  height: 180px;
+}
+.media-placeholder img {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Imagens dos cards de Produtos */
+.product-img-box {
+  height: 180px;
+}
+.product-img-box .product-img {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Imagens de Antes/Depois na Vitrine */
+.before-after-img-box {
+  height: 140px;
+}
+.before-after-img-box img {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Avatares dos depoimentos */
+.avatar-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Altura consistente entre cards de uma mesma fileira */
+.pilar-card,
+.vitrine-card {
+  height: 100%;
+}
+
+/* Inputs e ícones dos formulários de login/cadastro/perfil, incluindo os grupos de input */
+.input-group-text {
+  transition: var(--theme-transition);
+}
+
+/* 8. BANNER PROMOCIONAL (Página Principal) */
+.promo-banner-section {
+  min-height: 320px;
+  display: flex;
+  align-items: stretch;
+}
+
+.promo-banner-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(25%) saturate(1.15) brightness(0.75);
+}
+
+.promo-banner-overlay {
+  position: relative;
+  width: 100%;
+  min-height: 320px;
+  background: linear-gradient(90deg, rgba(5,10,18,0.94) 0%, rgba(9,14,25,0.86) 45%, rgba(13,27,42,0.72) 75%, rgba(29,78,216,0.55) 100%);
+}
+
+/* 9. HISTÓRICO DE PEDIDOS (Meus Pedidos) */
+.order-item {
+  background-color: var(--bg-soft-blue);
+  border-radius: 14px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.order-item .order-info small {
+  color: var(--text-muted);
+}
+
+/* Seção "Compromisso CrisCell" (Pilares) tem fundo escuro fixo (#050a12):
+   TODOS os textos e ícones dela são fixados em cores de alto contraste,
+   sem depender de nenhuma variável de tema (--highlight-accent, --blue-accent,
+   --text-main), para nunca ficarem desbotados no tema claro.
+   Prefixo body.theme-light/body.theme-dark garante especificidade máxima,
+   vencendo qualquer outra regra de tema que possa reduzir o contraste. */
+body.theme-light .section-dark-accent .sub-title-badge,
+body.theme-dark .section-dark-accent .sub-title-badge {
+  color: #fde047 !important;
+}
+
+body.theme-light .section-dark-accent .section-title,
+body.theme-dark .section-dark-accent .section-title {
+  color: #ffffff !important;
+}
+
+body.theme-light .section-dark-accent .section-subtitle,
+body.theme-dark .section-dark-accent .section-subtitle {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+body.theme-light .section-dark-accent .pilar-icon,
+body.theme-dark .section-dark-accent .pilar-icon {
+  color: #7dd3fc !important;
+}
+
+body.theme-light .section-dark-accent h6,
+body.theme-dark .section-dark-accent h6 {
+  color: #ffffff !important;
+}
+
+body.theme-light .section-dark-accent p,
+body.theme-dark .section-dark-accent p {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+  .hero-section {
+    padding-top: 100px;
+    text-align: center;
+  }
+
+  .promo-banner-overlay {
+    background: linear-gradient(180deg, rgba(5,10,18,0.55) 0%, rgba(5,10,18,0.92) 70%);
+    align-items: flex-end !important;
+    padding-bottom: 2rem;
+    text-align: center;
+  }
+}
